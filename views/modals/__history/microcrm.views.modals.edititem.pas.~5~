@@ -1,0 +1,101 @@
+unit microcrm.views.modals.edititem;
+
+interface
+
+uses
+  ManagerFunctions,
+
+  System.Classes,
+  System.SysUtils,
+  System.Variants,
+
+  Vcl.Controls,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.Forms,
+  Vcl.Graphics,
+  Vcl.StdCtrls,
+
+  Winapi.Messages,
+  Winapi.Windows,
+
+  microcrm.models.principal;
+
+type
+  TFormEditItem = class(TForm)
+    pnlContent: TPanel;
+    pnlHeader: TPanel;
+    lblFormTitle: TLabel;
+    pnlActions: TPanel;
+    btnSave: TButton;
+    txtItemNome: TEdit;
+    Label20: TLabel;
+    Label22: TLabel;
+    txtCobrado: TEdit;
+    procedure btnSaveClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormEditItem: TFormEditItem;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFormEditItem.btnSaveClick(Sender: TObject);
+var
+  vActualTotal, vItemValue: Double;
+  vValueNotFormated: String;
+begin
+   if (txtItemNome.Text = '' ) then
+    begin
+      ManagerFunctions.
+        CreateMessage('Campos obrigatório, não preenchido',
+                      'A Descrição do serviço é necessária',
+                      'error');
+        txtItemNome.SetFocus();
+    end
+    else if (txtCobrado.Text = '') then
+    begin
+        ManagerFunctions.
+          CreateMessage('Campos obrigatório, não preenchido',
+                        'O valor do serviço é necessário',
+                        'error');
+        txtCobrado.SetFocus();
+    end
+    else
+    begin
+      vValueNotFormated := Trim(StringReplace(txtCobrado.Text, 'R$', '', [rfReplaceAll, rfIgnoreCase]));
+      vValueNotFormated := Trim(StringReplace(vValueNotFormated, ' ', '', [rfReplaceAll]));
+      vValueNotFormated := Trim(StringReplace(vValueNotFormated, '.00', '', [rfReplaceAll]));
+      vValueNotFormated := StringReplace(vValueNotFormated, ',00', '', [rfReplaceAll]);
+
+      dmPrincipal.fdqOrcamentos_Itens.Active := True;
+      dmPrincipal.fdqOrcamentos_Itens.Edit;
+
+      dmPrincipal.fdqOrcamentos_Itensorcamento_id.AsInteger := dmPrincipal.fdqOrcamentosID.Value;
+      dmPrincipal.fdqOrcamentos_Itensservico_nome.AsString  := txtItemNome.Text;
+      dmPrincipal.fdqOrcamentos_ItensValor.AsString := vValueNotFormated;
+      dmPrincipal.fdqOrcamentos_ItensRemovido.AsInteger := 0;
+      dmPrincipal.fdqOrcamentos_Itens.Post;
+      dmPrincipal.fdqOrcamentos_Itens.Refresh;
+
+      dmPrincipal.fdqListItensBudget.ParamByName('BudgetId').AsInteger := dmPrincipal.fdqOrcamentosID.Value;
+      dmPrincipal.fdqListItensBudget.Active;
+      dmPrincipal.fdqListItensBudget.Refresh;
+
+      dmPrincipal.fdqOrcamentos.Edit;
+      vActualTotal := dmPrincipal.fdqOrcamentos.FieldByName('VALOR_TOTAL').AsFloat;
+      vItemValue := dmPrincipal.fdqOrcamentos_ItensVALOR.AsFloat;
+      dmPrincipal.fdqOrcamentos.FieldByName('valor_total').AsFloat := vItemValue + vItemValue;
+      dmPrincipal.fdqOrcamentos.Post;
+      dmPrincipal.fdqOrcamentos.Refresh;
+      ModalResult := mrYes;
+    end;
+end;
+
+end.

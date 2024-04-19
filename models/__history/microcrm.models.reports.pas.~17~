@@ -1,0 +1,327 @@
+unit microcrm.models.reports;
+
+interface
+
+uses
+  daDataModule,
+  daDataView,
+  daFireDAC,
+  daQueryDataView,
+  ppBands,
+  ppCache,
+  ppClass,
+  ppComm,
+  ppCtrls,
+  ppDB,
+  ppDBPipe,
+  ppDesignLayer,
+  ppMemo,
+  ppModule,
+  ppParameter,
+  ppPrnabl,
+  ppProd,
+  ppRelatv,
+  ppReport,
+  ppStrtch,
+  ppVar,
+
+  Data.DB,
+
+  FireDAC.Comp.Client,
+  FireDAC.Comp.DataSet,
+  FireDAC.DApt,
+  FireDAC.DApt.Intf,
+  FireDAC.DatS,
+  FireDAC.Phys.Intf,
+  FireDAC.Stan.Async,
+  FireDAC.Stan.Error,
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Param,
+
+  System.Classes,
+  System.SysUtils,
+
+  Vcl.Imaging.pngimage, ppEndUsr;
+
+type
+  TdmReports = class(TDataModule)
+    pprProdutosListagem: TppReport;
+    ppHeaderBand1: TppHeaderBand;
+    ppShape1: TppShape;
+    ppLabel7: TppLabel;
+    ppSystemVariable1: TppSystemVariable;
+    ppLabel10: TppLabel;
+    ppLabel6: TppLabel;
+    ppLabel14: TppLabel;
+    ppLabel17: TppLabel;
+    ppDBText6: TppDBText;
+    ppDBText7: TppDBText;
+    ppImage1: TppImage;
+    ppDBCalc1: TppDBCalc;
+    ppDBText8: TppDBText;
+    ppDetailBand1: TppDetailBand;
+    ppDBText1: TppDBText;
+    ppDBText2: TppDBText;
+    ppDBMemo1: TppDBMemo;
+    ppDBText3: TppDBText;
+    ppLabel1: TppLabel;
+    ppLabel2: TppLabel;
+    ppLabel3: TppLabel;
+    ppLabel4: TppLabel;
+    ppDBText4: TppDBText;
+    ppLabel5: TppLabel;
+    ppDBText5: TppDBText;
+    ppLine1: TppLine;
+    ppFooterBand1: TppFooterBand;
+    ppSystemVariable2: TppSystemVariable;
+    ppSystemVariable3: TppSystemVariable;
+    ppLabel8: TppLabel;
+    ppLabel9: TppLabel;
+    ppLabel11: TppLabel;
+    ppDesignLayers1: TppDesignLayers;
+    ppDesignLayer1: TppDesignLayer;
+    ppParameterList3: TppParameterList;
+    build_number: TppParameter;
+    fdqRepEmpresa: TFDQuery;
+    fdqRepEmpresaid: TIntegerField;
+    fdqRepEmpresarazao_social: TWideStringField;
+    fdqRepEmpresanome_fantasia: TWideStringField;
+    fdqRepEmpresacnpj: TWideStringField;
+    fdqRepEmpresaie: TWideStringField;
+    fdqRepEmpresacep: TWideStringField;
+    fdqRepEmpresalogradouro: TWideStringField;
+    fdqRepEmpresanumero: TWideStringField;
+    fdqRepEmpresacomplemento: TWideStringField;
+    fdqRepEmpresabairro: TWideStringField;
+    fdqRepEmpresacidade: TWideStringField;
+    fdqRepEmpresatelefone: TWideStringField;
+    fdqRepEmpresatelefone2: TWideStringField;
+    fdqRepEmpresaemail: TWideStringField;
+    fdqRepEmpresasite: TWideStringField;
+    fdqRepEmpresalogo: TWideStringField;
+    fdqRepEmpresahashmaster: TWideStringField;
+    pprOrcamentoAprovacao: TppReport;
+    ppParameterList1: TppParameterList;
+    fdqRepOrcamento: TFDQuery;
+    dsRepOrcamento: TDataSource;
+    dsRepOrcamentoItens: TDataSource;
+    fdqRepOrcamentoItens: TFDQuery;
+    dsRepEmpresa: TDataSource;
+    dbpRepEmpresa: TppDBPipeline;
+    dbpRepOrcamento: TppDBPipeline;
+    dbpRepOrcamentoItens: TppDBPipeline;
+    dbpRepServicosList: TppDBPipeline;
+    fdqRepServicosList: TFDQuery;
+    dsRepServicosList: TDataSource;
+    dbpRepUsuarios: TppDBPipeline;
+    fdqRepUsuarios: TFDQuery;
+    dsRepUsuarios: TDataSource;
+    pprUsuariosListagem: TppReport;
+    fdqRepOrcamentoorc_id: TIntegerField;
+    fdqRepOrcamentoorc_subtotal: TFloatField;
+    fdqRepOrcamentoorc_total: TFloatField;
+    fdqRepOrcamentoorc_detalhes: TWideStringField;
+    fdqRepOrcamentoorc_recebido: TFloatField;
+    fdqRepOrcamentoorc_emissao: TSQLTimeStampField;
+    fdqRepOrcamentoorc_validade: TSQLTimeStampField;
+    fdqRepOrcamentocli_nome: TWideStringField;
+    fdqRepOrcamentocli_documento: TWideStringField;
+    fdqRepOrcamentocli_telefone: TWideStringField;
+    fdqRepOrcamentocli_email: TWideStringField;
+    fdqRepOrcamentocli_endereco: TWideMemoField;
+    fdqRepOrcamentovei_marca: TWideStringField;
+    fdqRepOrcamentovei_modelo: TWideStringField;
+    fdqRepOrcamentovei_ano: TWideStringField;
+    fdqRepOrcamentovei_km: TWideStringField;
+    fdqRepOrcamentovei_placa: TWideStringField;
+    fdqRepOrcamentoItensitem_id: TIntegerField;
+    fdqRepOrcamentoItensitem_nome: TWideStringField;
+    fdqRepOrcamentoItensitem_valor: TFloatField;
+    fdqRepServicosListnome: TWideStringField;
+    fdqRepServicosListdescricao: TWideStringField;
+    fdqRepServicosListvalor: TFloatField;
+    fdqRepServicosListajustavel: TSmallintField;
+    fdqRepServicosListgrupo_id: TIntegerField;
+    fdqRepServicosListgrupo_nome: TWideStringField;
+    fdqRepServicosListativo: TSmallintField;
+    fdqRepServicosListcriado_em: TSQLTimeStampField;
+    ppHeaderBand3: TppHeaderBand;
+    ppImage3: TppImage;
+    ppLabel40: TppLabel;
+    ppLabel41: TppLabel;
+    ppDBText10: TppDBText;
+    ppDBText27: TppDBText;
+    ppDBText28: TppDBText;
+    ppShape11: TppShape;
+    ppShape12: TppShape;
+    ppShape13: TppShape;
+    ppShape14: TppShape;
+    ppShape15: TppShape;
+    ppShape16: TppShape;
+    ppShape17: TppShape;
+    ppLabel22: TppLabel;
+    ppLabel42: TppLabel;
+    ppDBText29: TppDBText;
+    ppDBText30: TppDBText;
+    ppLabel43: TppLabel;
+    ppLabel44: TppLabel;
+    ppDBText31: TppDBText;
+    ppDBText32: TppDBText;
+    ppLabel45: TppLabel;
+    ppLabel46: TppLabel;
+    ppDBText33: TppDBText;
+    ppLabel47: TppLabel;
+    ppDBText34: TppDBText;
+    ppLabel48: TppLabel;
+    ppDBText35: TppDBText;
+    ppLabel49: TppLabel;
+    ppDBText36: TppDBText;
+    ppLabel50: TppLabel;
+    ppDBText37: TppDBText;
+    ppLabel51: TppLabel;
+    ppDBText38: TppDBText;
+    ppLabel52: TppLabel;
+    ppDBText39: TppDBText;
+    ppLabel53: TppLabel;
+    ppDBText40: TppDBText;
+    ppLabel58: TppLabel;
+    ppLabel59: TppLabel;
+    ppLabel60: TppLabel;
+    ppShape19: TppShape;
+    ppLabel61: TppLabel;
+    ppDBMemo3: TppDBMemo;
+    ppDetailBand3: TppDetailBand;
+    ppDBText43: TppDBText;
+    ppDBText44: TppDBText;
+    ppFooterBand3: TppFooterBand;
+    ppShape18: TppShape;
+    ppSystemVariable4: TppSystemVariable;
+    ppSystemVariable7: TppSystemVariable;
+    ppLabel54: TppLabel;
+    ppLabel55: TppLabel;
+    ppLabel56: TppLabel;
+    ppVariable2: TppVariable;
+    ppDBText41: TppDBText;
+    ppLabel57: TppLabel;
+    ppLine4: TppLine;
+    ppDBText42: TppDBText;
+    ppDesignLayers2: TppDesignLayers;
+    ppDesignLayer2: TppDesignLayer;
+    fdqRepUsuariosid: TIntegerField;
+    fdqRepUsuariosnome: TWideStringField;
+    fdqRepUsuariostelefone: TWideStringField;
+    fdqRepUsuariosemail: TWideStringField;
+    fdqRepUsuarioslogin: TWideStringField;
+    fdqRepUsuariossenha: TWideStringField;
+    fdqRepUsuariosperfil: TWideStringField;
+    fdqRepUsuariosativo: TSmallintField;
+    fdqRepUsuarioscriado_em: TSQLTimeStampField;
+    fdqRepUsuariosalterado_em: TSQLTimeStampField;
+    ppHeaderBand2: TppHeaderBand;
+    ppShape2: TppShape;
+    ppLabel12: TppLabel;
+    ppSystemVariable5: TppSystemVariable;
+    ppLabel13: TppLabel;
+    ppLabel15: TppLabel;
+    ppLabel16: TppLabel;
+    ppLabel18: TppLabel;
+    ppDBText9: TppDBText;
+    ppDBText11: TppDBText;
+    ppImage2: TppImage;
+    ppDBCalc2: TppDBCalc;
+    ppDBText12: TppDBText;
+    ppDetailBand2: TppDetailBand;
+    ppDBText13: TppDBText;
+    ppDBText14: TppDBText;
+    ppLabel19: TppLabel;
+    ppLabel20: TppLabel;
+    ppLine2: TppLine;
+    ppLabel21: TppLabel;
+    ppDBText15: TppDBText;
+    ppLabel24: TppLabel;
+    ppDBText17: TppDBText;
+    ppLabel28: TppLabel;
+    ppDBText18: TppDBText;
+    ppFooterBand2: TppFooterBand;
+    ppSystemVariable6: TppSystemVariable;
+    ppSystemVariable8: TppSystemVariable;
+    ppLabel25: TppLabel;
+    ppLabel26: TppLabel;
+    ppLabel27: TppLabel;
+    ppDesignLayers3: TppDesignLayers;
+    ppDesignLayer3: TppDesignLayer;
+    ppParameterList2: TppParameterList;
+    ppParameter1: TppParameter;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure HandelReportByClass(tag: string);
+    procedure printOrcamentoParaAprovar(ORCA_ID: String);
+  end;
+
+var
+  dmReports: TdmReports;
+
+implementation
+
+uses
+  ManagerFunctions;
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+{ TdmReports }
+
+procedure TdmReports.HandelReportByClass(tag: string);
+begin
+  try
+
+      if (tag = 'FormListServices') then
+      begin
+        dmReports.pprProdutosListagem.Print;
+      end
+      else
+      if (tag = 'FormListUsers') then
+      begin
+        dmReports.pprUsuariosListagem.Print();
+      end
+      else
+      begin
+        ManagerFunctions.
+          CreateMessage('Este Relatório ainda não está disponível',
+                    '',
+                    'error');
+      end;
+
+  except on E: Exception do
+    ManagerFunctions.
+      CreateMessage('Falha ao gerar arquivo para impressão',
+                    E.Message,
+                    'error');
+  end;
+end;
+
+procedure TdmReports.printOrcamentoParaAprovar(ORCA_ID: String);
+begin
+  
+  try
+    fdqRepOrcamento.Active := False;
+    fdqRepOrcamentoItens.Active := False;
+    fdqRepOrcamento.ParamByName('ORCAMENTO_ID').AsInteger := StrToInt(ORCA_ID);
+    fdqRepOrcamento.Active := True;
+    fdqRepOrcamentoItens.ParamByName('ORCAMENTO_ID').AsInteger := StrToInt(ORCA_ID);
+    fdqRepOrcamentoItens.Active := True;
+    pprOrcamentoAprovacao.Print;
+  except on E: Exception do
+    begin
+      ManagerFunctions.
+      CreateMessage('Falha ao gerar arquivo para impressão',
+                    E.Message,
+                    'error');
+    end;
+  end;
+end;
+
+end.

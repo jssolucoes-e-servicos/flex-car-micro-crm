@@ -1,0 +1,258 @@
+﻿inherited FormRecibos: TFormRecibos
+  Caption = 'Recibos'
+  StyleElements = [seFont, seClient, seBorder]
+  ExplicitLeft = -198
+  TextHeight = 15
+  inherited pnlBackground: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    inherited pnlBaseForm: TPanel
+      StyleElements = [seFont, seClient, seBorder]
+      inherited pnlTitleBar: TPanel
+        StyleElements = [seFont, seClient, seBorder]
+        inherited Panel3: TPanel
+          StyleElements = [seFont, seClient, seBorder]
+          inherited lblDescriptionForm: TLabel
+            Width = 909
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited lblTitleForm: TLabel
+            Width = 874
+            Height = 38
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited lblFormName: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited lblStatus: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited lblCount: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited pnlCloseForm: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+        end
+      end
+      inherited pnlContent: TPanel
+        StyleElements = [seFont, seClient, seBorder]
+        inherited pnlLeft: TPanel
+          StyleElements = [seFont, seClient, seBorder]
+          inherited pnlDivider: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited pnlButtonNew: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+            inherited Panel4: TPanel
+              StyleElements = [seFont, seClient, seBorder]
+              inherited Label2: TLabel
+                Width = 128
+                StyleElements = [seFont, seClient, seBorder]
+              end
+              inherited Label4: TLabel
+                Width = 128
+                StyleElements = [seFont, seClient, seBorder]
+              end
+            end
+          end
+          inherited pnlButtonPrint: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+            inherited Panel5: TPanel
+              StyleElements = [seFont, seClient, seBorder]
+              inherited Label5: TLabel
+                Width = 128
+                StyleElements = [seFont, seClient, seBorder]
+              end
+              inherited Label6: TLabel
+                Width = 128
+                StyleElements = [seFont, seClient, seBorder]
+              end
+            end
+          end
+          inherited pnlButtonUpdate: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+            inherited Panel6: TPanel
+              StyleElements = [seFont, seClient, seBorder]
+              inherited Label7: TLabel
+                Width = 128
+                StyleElements = [seFont, seClient, seBorder]
+              end
+              inherited Label8: TLabel
+                Width = 128
+                StyleElements = [seFont, seClient, seBorder]
+              end
+            end
+          end
+        end
+        inherited pnlCenter: TPanel
+          StyleElements = [seFont, seClient, seBorder]
+          inherited pnlFiterBox: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+            inherited pnlButtonYes: TPanel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited cboField: TJvComboBox
+              StyleElements = [seFont, seClient, seBorder]
+              Items.Strings = (
+                'NOME'
+                'N'#218'MERO'
+                'DOCUMENTO'
+                'DESCRICAO')
+            end
+            inherited txtValue: TJvEdit
+              StyleElements = [seFont, seClient, seBorder]
+            end
+          end
+          inherited pnlGrid: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+            inherited dbgList: TDBGrid
+              Columns = <
+                item
+                  Expanded = False
+                  FieldName = 'N'#250'mero'
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWindowText
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Segoe UI'
+                  Title.Font.Style = [fsBold]
+                  Width = 100
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'Nome'
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWindowText
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Segoe UI'
+                  Title.Font.Style = [fsBold]
+                  Width = 280
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'Documento'
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWindowText
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Segoe UI'
+                  Title.Font.Style = [fsBold]
+                  Width = 120
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'Descri'#231#227'o'
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWindowText
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Segoe UI'
+                  Title.Font.Style = [fsBold]
+                  Width = 250
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'Valor'
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWindowText
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Segoe UI'
+                  Title.Font.Style = [fsBold]
+                  Width = 120
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'Emiss'#227'o'
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWindowText
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Segoe UI'
+                  Title.Font.Style = [fsBold]
+                  Width = 120
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'Reverso'
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWindowText
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Segoe UI'
+                  Title.Font.Style = [fsBold]
+                  Width = 70
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'Forma de pagamento'
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWindowText
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Segoe UI'
+                  Title.Font.Style = [fsBold]
+                  Width = 120
+                  Visible = True
+                end>
+            end
+          end
+        end
+      end
+    end
+  end
+  inherited fdqList: TFDQuery
+    SQL.Strings = (
+      'SELECT'
+      ' r.id AS "N'#250'mero",'
+      ' r.cliente_nome AS "Nome",'
+      ' r.cliente_documento AS "Documento",'
+      ' r.descricao AS "Descri'#231#227'o",'
+      ' r.valor AS "Valor",'
+      ' r.data_emissao AS "Emiss'#227'o",'
+      ' r.reverso AS "Reverso",'
+      ' r.forma_pagamento AS "Forma de pagamento"'
+      'FROM recibos AS r')
+    object fdqListNúmero: TIntegerField
+      FieldName = 'N'#250'mero'
+      Origin = '"N'#250'mero"'
+    end
+    object fdqListNome: TWideStringField
+      FieldName = 'Nome'
+      Origin = '"Nome"'
+      Size = 255
+    end
+    object fdqListDocumento: TWideStringField
+      FieldName = 'Documento'
+      Origin = '"Documento"'
+      Size = 18
+    end
+    object fdqListDescrição: TWideStringField
+      FieldName = 'Descri'#231#227'o'
+      Origin = '"Descri'#231#227'o"'
+      Size = 1024
+    end
+    object fdqListValor: TFloatField
+      FieldName = 'Valor'
+      Origin = '"Valor"'
+    end
+    object fdqListEmissão: TSQLTimeStampField
+      FieldName = 'Emiss'#227'o'
+      Origin = '"Emiss'#227'o"'
+      ProviderFlags = [pfInUpdate]
+    end
+    object fdqListReverso: TSmallintField
+      FieldName = 'Reverso'
+      Origin = '"Reverso"'
+      DisplayFormat = 'sim;n'#227'o'
+    end
+    object fdqListFormadepagamento: TWideStringField
+      FieldName = 'Forma de pagamento'
+      Origin = '"Forma de pagamento"'
+      Size = 255
+    end
+  end
+  inherited dsRemote: TDataSource
+    DataSet = dmPrincipal.fdqRecibos
+  end
+end

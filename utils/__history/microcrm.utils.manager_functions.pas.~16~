@@ -1,0 +1,114 @@
+unit microcrm.utils.manager_functions;
+
+interface
+
+uses
+  IdBaseComponent,
+  IdComponent,
+  IdException,
+  IdExplicitTLSClientServerBase,
+  IdFTP,
+  IdTCPClient,
+  IdTCPConnection,
+  ShellAPI,
+  WinInet,
+
+  System.Classes,
+  System.IniFiles,
+  System.SysUtils,
+  System.Variants,
+  System.Zip,
+
+  Vcl.Buttons,
+  Vcl.ComCtrls,
+  Vcl.Controls,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.Forms,
+  Vcl.Graphics,
+  Vcl.Imaging.pngimage,
+  Vcl.StdCtrls,
+  BCrypt,
+
+  Winapi.Messages,
+  Winapi.Windows;
+
+
+  function ObterDiretorio(): String;
+  function GetSistemInfo(pField: string): String;
+  function MakeHash(pValue : string): String;
+  function CreateMessage(TitleMessage, MSG, MsgType : string) : Boolean;
+  function CreateCustomMessage(TitleMessage, MSG, MsgType, Icon : string) : Boolean;
+  function CreateInputMessage(TitleMessage, MSG, MsgType : string) : String;
+
+implementation
+
+uses
+  microcrm.utils.modal_messages;
+
+ function ObterDiretorio(): String;
+ var
+  appPath: String;
+  begin
+    appPath   := ExtractFilePath(Application.ExeName);
+    //appPath   := ExtractFilePath(ExcludeTrailingPathDelimiter(appPath));
+    //appPath   := appPath + 'contents/';
+    result    := appPath
+  end;
+
+  function GetSistemInfo(pField: string): String;
+  var pResult : String;
+  begin
+    if pField = 'version' then
+      pResult := '1.0';
+    if pField = 'build' then
+      pResult := '1.0.1.12-dev';
+    if pField = 'name' then
+      pResult := 'flexCar | Micro CRM';
+
+
+    Result    := pResult;
+  end;
+
+  function MakeHash(pValue : string): String;
+  var
+  LHash: string;
+  begin
+    LHash := TBCrypt.GenerateHash(pValue);
+    Result := LHash;
+  end;
+
+  function CreateMessage(TitleMessage, MSG, MsgType : string) : Boolean;
+  begin
+    Result := False;
+    FormDialogMessages                := TFormDialogMessages.Create(nil);
+    FormDialogMessages.sTitleForm     := GetSistemInfo('name');
+    FormDialogMessages.sTitleMessage  := TitleMessage;
+    FormDialogMessages.sMessage       := MSG;
+    FormDialogMessages.sType          := MsgType;
+    FormDialogMessages.ShowModal;
+    Result                            := FormDialogMessages.bResponseMsg;
+  end;
+
+  function CreateCustomMessage( TitleMessage, MSG, MsgType, Icon : string) : Boolean;
+  begin
+    Result := False;
+    FormDialogMessages                := TFormDialogMessages.Create(nil);
+    FormDialogMessages.sTitleForm     := GetSistemInfo('name');
+    FormDialogMessages.sTitleMessage  := TitleMessage;
+    FormDialogMessages.sMessage       := MSG;
+    FormDialogMessages.sType          := MsgType;
+    FormDialogMessages.sIcon          := Icon;
+
+    FormDialogMessages.ShowModal;
+    Result                            := FormDialogMessages.bResponseMsg;
+  end;
+
+  function CreateInputMessage(TitleMessage, MSG, MsgType : string) : String;
+  begin
+     //
+     Result := '';
+  end;
+
+
+end.

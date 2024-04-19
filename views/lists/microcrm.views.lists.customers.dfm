@@ -1,0 +1,307 @@
+inherited FormListCustomers: TFormListCustomers
+  Caption = 'Clientes'
+  StyleElements = [seFont, seClient, seBorder]
+  ExplicitLeft = 2
+  TextHeight = 15
+  inherited pnlBackground: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    inherited pnlBaseForm: TPanel
+      StyleElements = [seFont, seClient, seBorder]
+      inherited pnlTitleBar: TPanel
+        StyleElements = [seFont, seClient, seBorder]
+        inherited Panel3: TPanel
+          StyleElements = [seFont, seClient, seBorder]
+          inherited lblDescriptionForm: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited lblTitleForm: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited lblFormName: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited lblStatus: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited lblCount: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited pnlCloseForm: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+        end
+      end
+      inherited pnlContent: TPanel
+        StyleElements = [seFont, seClient, seBorder]
+        inherited pnlLeft: TPanel
+          StyleElements = [seFont, seClient, seBorder]
+          inherited pnlDivider: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited pnlButtonNew: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+            inherited Panel4: TPanel
+              StyleElements = [seFont, seClient, seBorder]
+              inherited Label2: TLabel
+                StyleElements = [seFont, seClient, seBorder]
+              end
+              inherited Label4: TLabel
+                StyleElements = [seFont, seClient, seBorder]
+              end
+            end
+          end
+          inherited pnlButtonPrint: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+            inherited Panel5: TPanel
+              StyleElements = [seFont, seClient, seBorder]
+              inherited Label5: TLabel
+                StyleElements = [seFont, seClient, seBorder]
+              end
+              inherited Label6: TLabel
+                StyleElements = [seFont, seClient, seBorder]
+              end
+            end
+          end
+          inherited pnlButtonUpdate: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+            inherited Panel6: TPanel
+              StyleElements = [seFont, seClient, seBorder]
+              inherited Label7: TLabel
+                StyleElements = [seFont, seClient, seBorder]
+              end
+              inherited Label8: TLabel
+                StyleElements = [seFont, seClient, seBorder]
+              end
+            end
+          end
+        end
+        inherited pnlCenter: TPanel
+          StyleElements = [seFont, seClient, seBorder]
+          inherited pnlFiterBox: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+            inherited pnlButtonYes: TPanel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited cboField: TJvComboBox
+              StyleElements = [seFont, seClient, seBorder]
+              Items.Strings = (
+                'NOME'
+                'DOCUMENTO'
+                'TELEFONE'
+                'EMAIL'
+                'PLACA')
+            end
+            inherited txtValue: TJvEdit
+              StyleElements = [seFont, seClient, seBorder]
+            end
+          end
+          inherited pnlGrid: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+            inherited dbgList: TDBGrid
+              Columns = <
+                item
+                  Expanded = False
+                  FieldName = 'Nome'
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWindowText
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Segoe UI'
+                  Title.Font.Style = [fsBold]
+                  Width = 280
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'Documento'
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWindowText
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Segoe UI'
+                  Title.Font.Style = [fsBold]
+                  Width = 120
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'Telefone'
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWindowText
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Segoe UI'
+                  Title.Font.Style = [fsBold]
+                  Width = 80
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'E-mail'
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWindowText
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Segoe UI'
+                  Title.Font.Style = [fsBold]
+                  Width = 230
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'Placa'
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWindowText
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Segoe UI'
+                  Title.Font.Style = [fsBold]
+                  Width = 100
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'Marca'
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWindowText
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Segoe UI'
+                  Title.Font.Style = [fsBold]
+                  Width = 120
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'Modelo'
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWindowText
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Segoe UI'
+                  Title.Font.Style = [fsBold]
+                  Width = 120
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'Ano'
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWindowText
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Segoe UI'
+                  Title.Font.Style = [fsBold]
+                  Width = 50
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'KM'
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWindowText
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Segoe UI'
+                  Title.Font.Style = [fsBold]
+                  Width = 80
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'status'
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWindowText
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Segoe UI'
+                  Title.Font.Style = [fsBold]
+                  Width = 100
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'Ativo'
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWindowText
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Segoe UI'
+                  Title.Font.Style = [fsBold]
+                  Width = 50
+                  Visible = True
+                end>
+            end
+          end
+        end
+      end
+    end
+  end
+  inherited fdqList: TFDQuery
+    SQL.Strings = (
+      'SELECT'
+      '   c.nome AS "Nome",'
+      '   c.documento AS "Documento",'
+      '   c.telefone AS "Telefone",'
+      '   c.email AS "E-mail",'
+      '   c.veiculo_placa AS "Placa",'
+      '   c.veiculo_marca AS "Marca",'
+      '   c.veiculo_modelo AS "Modelo",'
+      '   c.veiculo_ano AS "Ano",   '
+      '   c.veiculo_km AS "KM",'
+      '   s.Nome AS Status,'
+      '   c.ativo AS "Ativo"'
+      '   '
+      'FROM '
+      '   clientes AS c'
+      'INNER JOIN clientes_status AS s ON ( s.id = c.status_id )')
+    object fdqListNome: TWideStringField
+      FieldName = 'Nome'
+      Origin = '"Nome"'
+      Size = 255
+    end
+    object fdqListDocumento: TWideStringField
+      FieldName = 'Documento'
+      Origin = '"Documento"'
+    end
+    object fdqListTelefone: TWideStringField
+      FieldName = 'Telefone'
+      Origin = '"Telefone"'
+      Size = 11
+    end
+    object fdqListEmail: TWideStringField
+      FieldName = 'E-mail'
+      Origin = '"E-mail"'
+      Size = 255
+    end
+    object fdqListPlaca: TWideStringField
+      FieldName = 'Placa'
+      Origin = '"Placa"'
+      Size = 8
+    end
+    object fdqListMarca: TWideStringField
+      FieldName = 'Marca'
+      Origin = '"Marca"'
+      Size = 150
+    end
+    object fdqListModelo: TWideStringField
+      FieldName = 'Modelo'
+      Origin = '"Modelo"'
+      Size = 150
+    end
+    object fdqListAno: TWideStringField
+      FieldName = 'Ano'
+      Origin = '"Ano"'
+      Size = 4
+    end
+    object fdqListKM: TWideStringField
+      FieldName = 'KM'
+      Origin = '"KM"'
+      Size = 10
+    end
+    object fdqListstatus: TWideStringField
+      AutoGenerateValue = arDefault
+      DisplayLabel = 'Status'
+      FieldName = 'status'
+      Origin = 'status'
+      Size = 100
+    end
+    object fdqListAtivo: TSmallintField
+      FieldName = 'Ativo'
+      Origin = '"Ativo"'
+      DisplayFormat = 'Sim;N'#227'o'
+    end
+  end
+  inherited dsRemote: TDataSource
+    DataSet = dmPrincipal.fdqClientes
+  end
+end

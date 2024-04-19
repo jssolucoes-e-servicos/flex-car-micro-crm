@@ -1,0 +1,406 @@
+unit microcrm.models.principal;
+
+interface
+
+uses
+  Data.DB,
+
+  FireDAC.Comp.Client,
+  FireDAC.Comp.DataSet,
+  FireDAC.Comp.UI,
+  FireDAC.DApt,
+  FireDAC.DApt.Intf,
+  FireDAC.DatS,
+  FireDAC.Phys,
+  FireDAC.Phys.Intf,
+  FireDAC.Phys.MySQL,
+  FireDAC.Phys.MySQLDef,
+  FireDAC.Stan.Async,
+  FireDAC.Stan.Def,
+  FireDAC.Stan.Error,
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Param,
+  FireDAC.Stan.Pool,
+  FireDAC.UI.Intf,
+  FireDAC.VCLUI.Wait,
+
+  System.Classes,
+  System.IniFiles,
+  System.SysUtils,
+  FireDAC.Phys.FB, FireDAC.Phys.FBDef, FireDAC.Phys.IBBase,
+  FireDAC.Phys.PGDef, FireDAC.Phys.PG;
+
+type
+  TdmPrincipal = class(TDataModule)
+    FDGUIxWaitCursor1: TFDGUIxWaitCursor;
+    FDPhysPgDriverLink1: TFDPhysPgDriverLink;
+    fdcPrincipal: TFDConnection;
+    fdqEmpresa: TFDQuery;
+    fdqEmpresaid: TIntegerField;
+    fdqEmpresarazao_social: TWideStringField;
+    fdqEmpresanome_fantasia: TWideStringField;
+    fdqEmpresacnpj: TWideStringField;
+    fdqEmpresaie: TWideStringField;
+    fdqEmpresacep: TWideStringField;
+    fdqEmpresalogradouro: TWideStringField;
+    fdqEmpresanumero: TWideStringField;
+    fdqEmpresacomplemento: TWideStringField;
+    fdqEmpresabairro: TWideStringField;
+    fdqEmpresacidade: TWideStringField;
+    fdqEmpresatelefone: TWideStringField;
+    fdqEmpresatelefone2: TWideStringField;
+    fdqEmpresaemail: TWideStringField;
+    fdqEmpresasite: TWideStringField;
+    fdqEmpresalogo: TWideStringField;
+    fdqEmpresahashmaster: TWideStringField;
+    fdqConfigs: TFDQuery;
+    fdqRecibos: TFDQuery;
+    fdqUsuarios: TFDQuery;
+    fdqClientes_Status: TFDQuery;
+    fdqClientes: TFDQuery;
+    fdqServicos_Grupos: TFDQuery;
+    fdqServicos: TFDQuery;
+    fdqOrcamentos_Status: TFDQuery;
+    fdqOrcamentos: TFDQuery;
+    fdqConfigsid: TIntegerField;
+    fdqConfigsname: TWideStringField;
+    fdqConfigsvalor: TWideStringField;
+    fdqRecibosid: TIntegerField;
+    fdqRecibosreverso: TSmallintField;
+    fdqReciboscliente_nome: TWideStringField;
+    fdqReciboscliente_documento: TWideStringField;
+    fdqRecibosdata_emissao: TSQLTimeStampField;
+    fdqRecibosdescricao: TWideStringField;
+    fdqRecibosvalor: TFloatField;
+    fdqRecibosvalor_descritivo: TWideStringField;
+    fdqRecibosforma_pagamento: TWideStringField;
+    fdqReciboscriado_em: TSQLTimeStampField;
+    fdqRecibosalterado_em: TSQLTimeStampField;
+    fdqRecibosusuario_id: TIntegerField;
+    fdqUsuariosid: TIntegerField;
+    fdqUsuariosnome: TWideStringField;
+    fdqUsuariostelefone: TWideStringField;
+    fdqUsuariosemail: TWideStringField;
+    fdqUsuarioslogin: TWideStringField;
+    fdqUsuariossenha: TWideStringField;
+    fdqUsuariosperfil: TWideStringField;
+    fdqUsuariosativo: TSmallintField;
+    fdqUsuarioscriado_em: TSQLTimeStampField;
+    fdqUsuariosalterado_em: TSQLTimeStampField;
+    fdqClientes_Statusid: TIntegerField;
+    fdqClientes_Statusnome: TWideStringField;
+    fdqClientes_Statusdescricao: TWideStringField;
+    fdqClientes_Statuscor: TWideStringField;
+    fdqClientes_Statuscriado_em: TSQLTimeStampField;
+    fdqClientes_Statusalterado_em: TSQLTimeStampField;
+    fdqClientesid: TIntegerField;
+    fdqClientesnome: TWideStringField;
+    fdqClientesdocumento: TWideStringField;
+    fdqClientestelefone: TWideStringField;
+    fdqClientesemail: TWideStringField;
+    fdqClientescep: TWideStringField;
+    fdqClienteslogradouro: TWideStringField;
+    fdqClientesnumero: TWideStringField;
+    fdqClientescomplemento: TWideStringField;
+    fdqClientesbairro: TWideStringField;
+    fdqClientescidade: TWideStringField;
+    fdqClientesveiculo_marca: TWideStringField;
+    fdqClientesveiculo_modelo: TWideStringField;
+    fdqClientesveiculo_placa: TWideStringField;
+    fdqClientesveiculo_ano: TWideStringField;
+    fdqClientesveiculo_km: TWideStringField;
+    fdqClientesstatus_id: TIntegerField;
+    fdqClientesativo: TSmallintField;
+    fdqClientescriado_em: TSQLTimeStampField;
+    fdqClientesalterado_em: TSQLTimeStampField;
+    fdqClientescriado_por: TIntegerField;
+    fdqClientesalterado_por: TIntegerField;
+    fdqServicosid: TIntegerField;
+    fdqServicosnome: TWideStringField;
+    fdqServicosdescricao: TWideStringField;
+    fdqServicosvalor: TFloatField;
+    fdqServicosajustavel: TSmallintField;
+    fdqServicosgrupo_id: TIntegerField;
+    fdqServicosativo: TSmallintField;
+    fdqServicoscriado_em: TSQLTimeStampField;
+    fdqServicosalterado_em: TSQLTimeStampField;
+    fdqOrcamentos_Statusid: TIntegerField;
+    fdqOrcamentos_Statusnome: TWideStringField;
+    fdqOrcamentos_Statuscor: TWideStringField;
+    fdqOrcamentos_Statusis_active: TSmallintField;
+    fdqOrcamentosid: TIntegerField;
+    fdqOrcamentoscliente_id: TIntegerField;
+    fdqOrcamentosvalor_subtotal: TFloatField;
+    fdqOrcamentosvalor_deconto: TFloatField;
+    fdqOrcamentosvalor_total: TFloatField;
+    fdqOrcamentosvalor_recebido: TFloatField;
+    fdqOrcamentosdetalhes: TWideStringField;
+    fdqOrcamentosdata_emissao: TSQLTimeStampField;
+    fdqOrcamentosvalidade: TSQLTimeStampField;
+    fdqOrcamentosautorizado: TSmallintField;
+    fdqOrcamentosautorizado_em: TSQLTimeStampField;
+    fdqOrcamentosautorizado_cliente: TWideStringField;
+    fdqOrcamentosautorizado_operador: TIntegerField;
+    fdqOrcamentosstatus_id: TIntegerField;
+    fdqOrcamentoscriado_em: TSQLTimeStampField;
+    fdqOrcamentoscriado_por: TIntegerField;
+    fdqOrcamentosalterado_em: TSQLTimeStampField;
+    fdqOrcamentosalterado_por: TIntegerField;
+    fdqOrcamentosPagamentos: TFDQuery;
+    fdqFormasPagamento: TFDQuery;
+    fdqLogin: TFDQuery;
+    fdqFilterClientes: TFDQuery;
+    fdqListItensOrcamento: TFDQuery;
+    fdqFilterServicos: TFDQuery;
+    fdqOrcamentosView: TFDQuery;
+    fdqOrcamentosDetails: TFDQuery;
+    fdqOrcamentosDetailsid: TIntegerField;
+    fdqOrcamentosDetailscliente_id: TIntegerField;
+    fdqOrcamentosDetailsvalor_subtotal: TFloatField;
+    fdqOrcamentosDetailsvalor_deconto: TFloatField;
+    fdqOrcamentosDetailsvalor_total: TFloatField;
+    fdqOrcamentosDetailsvalor_recebido: TFloatField;
+    fdqOrcamentosDetailsdetalhes: TWideStringField;
+    fdqOrcamentosDetailsdata_emissao: TSQLTimeStampField;
+    fdqOrcamentosDetailsvalidade: TSQLTimeStampField;
+    fdqOrcamentosDetailsautorizado: TSmallintField;
+    fdqOrcamentosDetailsautorizado_em: TSQLTimeStampField;
+    fdqOrcamentosDetailsautorizado_cliente: TWideStringField;
+    fdqOrcamentosDetailsautorizado_operador: TIntegerField;
+    fdqOrcamentosDetailsstatus_id: TIntegerField;
+    fdqOrcamentosDetailscriado_em: TSQLTimeStampField;
+    fdqOrcamentosDetailscriado_por: TIntegerField;
+    fdqOrcamentosDetailsalterado_em: TSQLTimeStampField;
+    fdqOrcamentosDetailsalterado_por: TIntegerField;
+    fdqOrcamentosDetailsid_1: TIntegerField;
+    fdqOrcamentosDetailsnome: TWideStringField;
+    fdqOrcamentosDetailsdocumento: TWideStringField;
+    fdqOrcamentosDetailstelefone: TWideStringField;
+    fdqOrcamentosDetailsemail: TWideStringField;
+    fdqOrcamentosDetailscep: TWideStringField;
+    fdqOrcamentosDetailslogradouro: TWideStringField;
+    fdqOrcamentosDetailsnumero: TWideStringField;
+    fdqOrcamentosDetailscomplemento: TWideStringField;
+    fdqOrcamentosDetailsbairro: TWideStringField;
+    fdqOrcamentosDetailscidade: TWideStringField;
+    fdqOrcamentosDetailsveiculo_marca: TWideStringField;
+    fdqOrcamentosDetailsveiculo_modelo: TWideStringField;
+    fdqOrcamentosDetailsveiculo_placa: TWideStringField;
+    fdqOrcamentosDetailsveiculo_ano: TWideStringField;
+    fdqOrcamentosDetailsveiculo_km: TWideStringField;
+    fdqOrcamentosDetailsstatus_id_1: TIntegerField;
+    fdqOrcamentosDetailsativo: TSmallintField;
+    fdqOrcamentosDetailscriado_em_1: TSQLTimeStampField;
+    fdqOrcamentosDetailsalterado_em_1: TSQLTimeStampField;
+    fdqOrcamentosDetailscriado_por_1: TIntegerField;
+    fdqOrcamentosDetailsalterado_por_1: TIntegerField;
+    fdqFilterClientesid: TIntegerField;
+    fdqFilterClientesnome: TWideStringField;
+    fdqFilterClientesdocumento: TWideStringField;
+    fdqFilterClientestelefone: TWideStringField;
+    fdqFilterClientesemail: TWideStringField;
+    fdqFilterClientescep: TWideStringField;
+    fdqFilterClienteslogradouro: TWideStringField;
+    fdqFilterClientesnumero: TWideStringField;
+    fdqFilterClientescomplemento: TWideStringField;
+    fdqFilterClientesbairro: TWideStringField;
+    fdqFilterClientescidade: TWideStringField;
+    fdqFilterClientesveiculo_marca: TWideStringField;
+    fdqFilterClientesveiculo_modelo: TWideStringField;
+    fdqFilterClientesveiculo_placa: TWideStringField;
+    fdqFilterClientesveiculo_ano: TWideStringField;
+    fdqFilterClientesveiculo_km: TWideStringField;
+    fdqFilterClientesstatus_id: TIntegerField;
+    fdqFilterClientesativo: TSmallintField;
+    fdqFilterClientescriado_em: TSQLTimeStampField;
+    fdqFilterClientesalterado_em: TSQLTimeStampField;
+    fdqFilterClientescriado_por: TIntegerField;
+    fdqFilterClientesalterado_por: TIntegerField;
+    fdqFilterServicosid: TIntegerField;
+    fdqFilterServicosnome: TWideStringField;
+    fdqFilterServicosdescricao: TWideStringField;
+    fdqFilterServicosvalor: TFloatField;
+    fdqFilterServicosajustavel: TSmallintField;
+    fdqFilterServicosgrupo_id: TIntegerField;
+    fdqFilterServicosativo: TSmallintField;
+    fdqFilterServicoscriado_em: TSQLTimeStampField;
+    fdqFilterServicosalterado_em: TSQLTimeStampField;
+    fdqOrcamentosViewid: TIntegerField;
+    fdqOrcamentosViewcliente_id: TIntegerField;
+    fdqOrcamentosViewvalor_subtotal: TFloatField;
+    fdqOrcamentosViewvalor_deconto: TFloatField;
+    fdqOrcamentosViewvalor_total: TFloatField;
+    fdqOrcamentosViewvalor_recebido: TFloatField;
+    fdqOrcamentosViewdetalhes: TWideStringField;
+    fdqOrcamentosViewdata_emissao: TSQLTimeStampField;
+    fdqOrcamentosViewvalidade: TSQLTimeStampField;
+    fdqOrcamentosViewautorizado: TSmallintField;
+    fdqOrcamentosViewautorizado_em: TSQLTimeStampField;
+    fdqOrcamentosViewautorizado_cliente: TWideStringField;
+    fdqOrcamentosViewautorizado_operador: TIntegerField;
+    fdqOrcamentosViewstatus_id: TIntegerField;
+    fdqOrcamentosViewcriado_em: TSQLTimeStampField;
+    fdqOrcamentosViewcriado_por: TIntegerField;
+    fdqOrcamentosViewalterado_em: TSQLTimeStampField;
+    fdqOrcamentosViewalterado_por: TIntegerField;
+    fdqOrcamentosViewid_1: TIntegerField;
+    fdqOrcamentosViewnome: TWideStringField;
+    fdqOrcamentosViewdocumento: TWideStringField;
+    fdqOrcamentosViewtelefone: TWideStringField;
+    fdqOrcamentosViewemail: TWideStringField;
+    fdqOrcamentosViewcep: TWideStringField;
+    fdqOrcamentosViewlogradouro: TWideStringField;
+    fdqOrcamentosViewnumero: TWideStringField;
+    fdqOrcamentosViewcomplemento: TWideStringField;
+    fdqOrcamentosViewbairro: TWideStringField;
+    fdqOrcamentosViewcidade: TWideStringField;
+    fdqOrcamentosViewveiculo_marca: TWideStringField;
+    fdqOrcamentosViewveiculo_modelo: TWideStringField;
+    fdqOrcamentosViewveiculo_placa: TWideStringField;
+    fdqOrcamentosViewveiculo_ano: TWideStringField;
+    fdqOrcamentosViewveiculo_km: TWideStringField;
+    fdqOrcamentosViewstatus_id_1: TIntegerField;
+    fdqOrcamentosViewativo: TSmallintField;
+    fdqOrcamentosViewcriado_em_1: TSQLTimeStampField;
+    fdqOrcamentosViewalterado_em_1: TSQLTimeStampField;
+    fdqOrcamentosViewcriado_por_1: TIntegerField;
+    fdqOrcamentosViewalterado_por_1: TIntegerField;
+    fdqOrcamentos_Itens: TFDQuery;
+    fdqOrcamentos_Itensid: TIntegerField;
+    fdqOrcamentos_Itensorcamento_id: TIntegerField;
+    fdqOrcamentos_Itensservico_id: TIntegerField;
+    fdqOrcamentos_Itensservico_nome: TWideStringField;
+    fdqOrcamentos_Itensservico_valor: TFloatField;
+    fdqOrcamentos_Itensvalor: TFloatField;
+    fdqOrcamentos_Itensremovido: TSmallintField;
+    fdqOrcamentos_Itenscriado_em: TSQLTimeStampField;
+    fdqOrcamentos_Itenscriado_por: TIntegerField;
+    fdqOrcamentos_Itensalterado_em: TSQLTimeStampField;
+    fdqOrcamentos_Itensalterado_por: TIntegerField;
+    fdqLoginid: TIntegerField;
+    fdqLoginnome: TWideStringField;
+    fdqLogintelefone: TWideStringField;
+    fdqLoginemail: TWideStringField;
+    fdqLoginlogin: TWideStringField;
+    fdqLoginsenha: TWideStringField;
+    fdqLoginperfil: TWideStringField;
+    fdqLoginativo: TSmallintField;
+    fdqLogincriado_em: TSQLTimeStampField;
+    fdqLoginalterado_em: TSQLTimeStampField;
+    procedure DataModuleCreate(Sender: TObject);
+    procedure DataModuleDestroy(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    function getString(section : String; tag : String): String;
+    procedure setString(section : String; tag : String);
+    function openConnection(): Boolean;
+    procedure closeConnection();
+    function verifyConfigurationExists(): Boolean;
+  end;
+
+var
+  dmPrincipal: TdmPrincipal;
+  iniconf: TIniFile;
+  iniPath: String;
+
+implementation
+
+uses
+    ManagerFunctions;
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+{ TdmPrincipal }
+
+procedure TdmPrincipal.closeConnection;
+begin
+  fdcPrincipal.Connected := False;
+end;
+
+procedure TdmPrincipal.DataModuleCreate(Sender: TObject);
+begin
+  //iniPath := ManagerFunctions.ObterDiretorio + 'stack.ini';
+end;
+
+procedure TdmPrincipal.DataModuleDestroy(Sender: TObject);
+begin
+  fdcPrincipal.Connected := False;
+end;
+
+function TdmPrincipal.getString(section, tag: String): String;
+begin
+  try
+    try
+    iniconf := TIniFile.Create(iniPath);
+    Result := iniconf.ReadString(section,tag,'null');
+    except on E: Exception do
+    end;
+  finally
+    iniconf.Free;
+  end;
+end;
+
+function TdmPrincipal.openConnection: Boolean;
+var
+ vServer, vDbPath: string;
+begin
+  try
+    fdcPrincipal.Connected := False;
+    vDbPath := ManagerFunctions.ObterDiretorio;
+    //vServer := getString('FDB','TYPE');
+    fdcPrincipal.Params.LoadFromFile(vDbPath + 'cpg.inf');
+    //if (vServer = 'local') then
+    //begin
+      //fdcPrincipal.Params.Database := 'fxcar_micrm';
+      //fdcPrincipal.Params.UserName := 'root';
+      //fdcPrincipal.Params.Password := '';
+
+    //end
+    //else
+    //begin
+      //fdcPrincipal.Params.Database := getString('FDB','PATH') + getString('FDB','FILE') + '.FDB';
+      //fdcPrincipal.Params.UserName := 'SYSDBA';
+      //fdcPrincipal.Params.Password := 'masterkey';
+    //end;
+    //FDPhysFBDriverLink1.VendorLib := ManagerFunctions.ObterDiretorio + 'fbclient.dll';
+    fdcPrincipal.LoginPrompt  := False;
+    fdcPrincipal.Connected    := True;
+    Result := fdcPrincipal.Connected;
+  except on E: Exception do
+  end;
+end;
+
+procedure TdmPrincipal.setString(section, tag: String);
+begin
+
+end;
+
+function TdmPrincipal.verifyConfigurationExists: Boolean;
+var
+  vServer, sConfigFile: string;
+begin
+  try
+    sConfigFile := ManagerFunctions.ObterDiretorio + 'cpg.inf';
+    if FileExists(sConfigFile) then
+      Result    := True
+    else
+      Result    := False;
+
+
+    //vServer := getString('FDB','TYPE');
+    //ShowMessage(vServer);
+    //if vServer = 'local' then
+    //  Result := True
+   // else
+   //   Result := False;
+  except on E: Exception do
+    Result      := False;
+  end;
+end;
+
+end.

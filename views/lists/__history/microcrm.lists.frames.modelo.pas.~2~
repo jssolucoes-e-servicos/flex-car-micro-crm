@@ -1,0 +1,36 @@
+unit microcrm.lists.frames.modelo;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids,
+  Vcl.DBGrids, Vcl.StdCtrls, JvExStdCtrls, JvEdit, JvCombobox, JvExControls,
+  JvLabel, Vcl.ExtCtrls;
+
+type
+  TFrameListModelo = class(TFrame)
+    pnlContent: TPanel;
+    pnlFiterBox: TPanel;
+    lblCboField: TJvLabel;
+    lblTxtValue: TJvLabel;
+    pnlButtonYes: TPanel;
+    cboField: TJvComboBox;
+    txtValue: TJvEdit;
+    pnlGrid: TPanel;
+    dbgList: TDBGrid;
+    dsList: TDataSource;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+implementation
+
+uses
+  microcrm.models.principal;
+
+{$R *.dfm}
+
+end.

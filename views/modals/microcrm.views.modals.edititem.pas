@@ -1,0 +1,97 @@
+unit microcrm.views.modals.edititem;
+
+interface
+
+uses
+  ManagerFunctions,
+
+  System.Classes,
+  System.SysUtils,
+  System.Variants,
+
+  Vcl.Controls,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.Forms,
+  Vcl.Graphics,
+  Vcl.StdCtrls,
+
+  Winapi.Messages,
+  Winapi.Windows,
+
+  microcrm.models.principal, Data.DB, Vcl.Mask, Vcl.DBCtrls;
+
+type
+  TFormEditItem = class(TForm)
+    pnlContent: TPanel;
+    pnlHeader: TPanel;
+    lblFormTitle: TLabel;
+    pnlActions: TPanel;
+    btnSave: TButton;
+    Label20: TLabel;
+    Label22: TLabel;
+    edtItemName: TDBEdit;
+    dsEdit: TDataSource;
+    edtValue: TDBEdit;
+    procedure btnSaveClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormEditItem: TFormEditItem;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFormEditItem.btnSaveClick(Sender: TObject);
+var
+  vActualTotal, vItemValue: Double;
+  vValueNotFormated: String;
+begin
+   if (edtItemName.Text = '' ) then
+    begin
+      ManagerFunctions.
+        CreateMessage('Campos obrigatório, não preenchido',
+                      'A Descrição do serviço é necessária',
+                      'error');
+        edtItemName.SetFocus();
+    end
+    else if (edtValue.Text = '') then
+    begin
+        ManagerFunctions.
+          CreateMessage('Campos obrigatório, não preenchido',
+                        'O valor do serviço é necessário',
+                        'error');
+        edtValue.SetFocus();
+    end
+    else
+    begin
+      vValueNotFormated := Trim(StringReplace(edtValue.Text, 'R$', '', [rfReplaceAll, rfIgnoreCase]));
+      vValueNotFormated := Trim(StringReplace(vValueNotFormated, ' ', '', [rfReplaceAll]));
+      vValueNotFormated := Trim(StringReplace(vValueNotFormated, '.00', '', [rfReplaceAll]));
+      vValueNotFormated := StringReplace(vValueNotFormated, ',00', '', [rfReplaceAll]);
+
+      dmPrincipal.fdqListItensBudget.Post;
+      dmPrincipal.fdqListItensBudget.Refresh;
+
+      dmPrincipal.fdqOrcamentos.Edit;
+      vActualTotal := dmPrincipal.fdqOrcamentos.FieldByName('VALOR_TOTAL').AsFloat;
+      vItemValue := dmPrincipal.fdqOrcamentos_ItensVALOR.AsFloat;
+      dmPrincipal.fdqOrcamentos.FieldByName('valor_total').AsFloat := vActualTotal + vItemValue;
+      dmPrincipal.fdqOrcamentos.Post;
+      dmPrincipal.fdqOrcamentos.Refresh;
+      ModalResult := mrYes;
+    end;
+end;
+
+procedure TFormEditItem.FormShow(Sender: TObject);
+begin
+  dmPrincipal.fdqListItensBudget.Edit;
+end;
+
+end.

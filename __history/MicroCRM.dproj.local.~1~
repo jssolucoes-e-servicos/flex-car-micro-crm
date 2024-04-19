@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2024/01/09 14:09:51.000.505,=C:\Users\jsant\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2024/03/11 09:40:44.000.771,=C:\Users\jsant\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/03/11 14:13:28.000.752,=C:\Users\jsant\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/04/02 09:49:06.000.918,=C:\Users\jsant\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/04/02 10:05:54.000.456,C:\Users\jsant\Documents\Embarcadero\Studio\Projects\Unit1.pas=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\views\microcrm.views.principal.pas</Transaction>
+    <Transaction>2024/04/02 10:05:54.000.456,C:\Users\jsant\Documents\Embarcadero\Studio\Projects\Unit1.dfm=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\views\microcrm.views.principal.dfm</Transaction>
+    <Transaction>2024/04/02 10:07:07.000.850,C:\Users\jsant\Documents\Embarcadero\Studio\Projects\Project1.dproj=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\views\flexCar_MicroCRM.dproj</Transaction>
+    <Transaction>2024/04/02 10:07:30.000.171,D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\views\flexCar_MicroCRM.dproj=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\views\MicroCRM.dproj</Transaction>
+    <Transaction>2024/04/02 10:27:17.000.608,D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\views\MicroCRM.dproj=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\MicroCRM.dproj</Transaction>
+    <Transaction>2024/04/02 12:09:57.000.835,=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\Unit1.pas</Transaction>
+    <Transaction>2024/04/02 15:12:59.000.402,D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\Unit1.pas=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\models\microcrm.models.principal.pas</Transaction>
+    <Transaction>2024/04/02 15:12:59.000.402,D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\Unit1.dfm=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\models\microcrm.models.principal.dfm</Transaction>
+    <Transaction>2024/04/02 17:01:16.000.661,=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\Unit1.pas</Transaction>
+    <Transaction>2024/04/02 17:01:41.000.611,D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\models\microcrm.models.reports.pas=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\Unit1.pas</Transaction>
+    <Transaction>2024/04/02 17:01:41.000.611,D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\models\microcrm.models.reports.dfm=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\Unit1.dfm</Transaction>
+    <Transaction>2024/04/02 17:12:25.000.020,=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\Unit1.pas</Transaction>
+    <Transaction>2024/04/02 17:41:56.000.433,D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\utils\microcrm.utils.resolve_exception.pas=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\Unit1.pas</Transaction>
+    <Transaction>2024/04/02 17:43:25.000.650,=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\Unit1.pas</Transaction>
+    <Transaction>2024/04/02 18:18:19.000.857,=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\Unit2.pas</Transaction>
+    <Transaction>2024/04/02 18:19:00.000.290,D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\utils\microcrm.utils.manager_functions.pas=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\Unit2.pas</Transaction>
+    <Transaction>2024/04/02 18:19:32.000.114,D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\utils\microcrm.utils.modal_messages.dfm=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\Unit1.dfm</Transaction>
+    <Transaction>2024/04/02 18:19:32.000.114,D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\utils\microcrm.utils.modal_messages.pas=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\Unit1.pas</Transaction>
+    <Transaction>2024/04/08 08:31:47.000.546,=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\Unit1.pas</Transaction>
+    <Transaction>2024/04/08 08:33:20.000.207,D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\Unit1.dfm=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\views\miscellaneous\microcrm.views.miscellaneous.starter.dfm</Transaction>
+    <Transaction>2024/04/08 08:33:20.000.207,D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\Unit1.pas=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\views\miscellaneous\microcrm.views.miscellaneous.starter.pas</Transaction>
+    <Transaction>2024/04/08 08:33:38.000.558,=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\Unit2.pas</Transaction>
+    <Transaction>2024/04/08 08:34:06.000.618,D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\Unit2.dfm=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\views\auth\microcrm.views.auth.login.dfm</Transaction>
+    <Transaction>2024/04/08 08:34:06.000.618,D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\Unit2.pas=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\views\auth\microcrm.views.auth.login.pas</Transaction>
+    <Transaction>2024/04/08 20:39:44.860,=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\Unit1.pas</Transaction>
+    <Transaction>2024/04/08 20:40:12.009,D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\utils\microcrm.utils.md5.pas=D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\Unit1.pas</Transaction>
+    <Transaction>2024/04/08 20:45:21.053,D:\_workspace\_projects\flex-platform\flex-car-erp\micro-crm\src\utils\microcrm.utils.md5.pas=</Transaction>
+  </Transactions>
+</BorlandProject>

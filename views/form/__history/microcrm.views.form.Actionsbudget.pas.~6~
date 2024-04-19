@@ -1,0 +1,145 @@
+unit microcrm.views.form.Actionsbudget;
+
+interface
+
+uses
+  ACBrBase,
+  ACBrEnterTab,
+
+  Data.DB,
+
+  System.Classes,
+  System.SysUtils,
+  System.Variants,
+
+  Vcl.Buttons,
+  Vcl.Controls,
+  Vcl.DBCtrls,
+  Vcl.DBGrids,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.Forms,
+  Vcl.Graphics,
+  Vcl.Grids,
+  Vcl.Imaging.pngimage,
+  Vcl.Mask,
+  Vcl.StdCtrls,
+
+  Winapi.Messages,
+  Winapi.ShellAPI,
+  Winapi.Windows,
+
+  microcrm.models.principal;
+
+type
+  TForm2 = class(TForm)
+    acbrntrtb1: TACBrEnterTab;
+    pnlBackground: TPanel;
+    pnlFilterCliente: TPanel;
+    dbgrd1: TDBGrid;
+    pnlBaseForm: TPanel;
+    pnlTitleBar: TPanel;
+    Panel3: TPanel;
+    lblDescriptionForm: TLabel;
+    lblTitleForm: TLabel;
+    pnlCloseForm: TPanel;
+    imgCloseForm: TImage;
+    pnlContent: TPanel;
+    pnlCenter: TPanel;
+    panelForm: TPanel;
+    panelContentTop: TPanel;
+    Label1: TLabel;
+    Label12: TLabel;
+    Label15: TLabel;
+    Label16: TLabel;
+    Label17: TLabel;
+    Label18: TLabel;
+    Label19: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    labelDataCadastro: TLabel;
+    labelId: TLabel;
+    labelMarca: TLabel;
+    edtveiculo_marca: TDBEdit;
+    edtdocumento: TDBEdit;
+    edtbairro: TDBEdit;
+    edtcidade: TDBEdit;
+    edtveiculo_modelo: TDBEdit;
+    edtveiculo_ano: TDBEdit;
+    edtveiculo_km: TDBEdit;
+    edtveiculo_placa: TDBEdit;
+    edttelefone: TDBEdit;
+    edtemail: TDBEdit;
+    edtcep: TDBEdit;
+    edtlogradouro: TDBEdit;
+    dbmmoDETALHES: TDBMemo;
+    txtClienteNome: TEdit;
+    edtcriado_em: TDBEdit;
+    edtid: TDBEdit;
+    edtnumero: TDBEdit;
+    edtcomplemento: TDBEdit;
+    btnIrParaItens: TButton;
+    edtnome: TDBEdit;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Label10: TLabel;
+    lblValorTotal: TLabel;
+    panelItens: TPanel;
+    pnlGrid: TPanel;
+    dbgItens: TDBGrid;
+    panelActions: TPanel;
+    dsOrcamentoDetalhes: TDataSource;
+    dsItens: TDataSource;
+    btnWhatsapp: TButton;
+    btnGerarPDF: TButton;
+    procedure btnWhatsappClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm2.btnWhatsappClick(Sender: TObject);
+var
+  Telefone: WideString;
+begin
+  // Verifica se o valor não é vazio e tem 11 dígitos
+  if (Trim(dmPrincipal.fdqBudgetDetailsTELEFONE.Value) <> '') and
+     (Length(Trim(dmPrincipal.fdqBudgetDetailsTELEFONE.Value)) = 11) then
+  begin
+    Telefone := 'https://api.whatsapp.com/send/?phone=55' +
+                WideString(dmPrincipal.fdqBudgetViewTELEFONE.Value) +
+                '&text=Segue orçamento&type=phone_number&app_absent=1';
+
+    ShellExecute(Handle, 'open', PWideChar(Telefone), '', '', SW_SHOWNORMAL);
+  end
+  else
+  begin
+   ShowMessage('Telefone não preenchido corretamente')
+  end;
+end;
+
+procedure TForm2.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  dmPrincipal.fdqBudgetView.Active := False;
+  dmPrincipal.fdqBudgetDetails.Active := False;
+  dmPrincipal.fdqBudgetView.Filtered := False;
+  dmPrincipal.fdqBudgetView.Active := True;
+  dmPrincipal.fdqBudgetView.Last;
+end;
+
+end.

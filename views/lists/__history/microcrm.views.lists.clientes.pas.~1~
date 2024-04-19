@@ -1,0 +1,41 @@
+unit microcrm.views.lists.clientes;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, microcrm.views.miscellaneous.model_list,
+  Data.DB, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, Vcl.ExtCtrls, System.Actions, Vcl.ActnList,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids,
+  Vcl.StdCtrls, JvExStdCtrls, JvEdit, JvCombobox, JvExControls, JvLabel,
+  Vcl.Imaging.pngimage;
+
+type
+  TFormClientes = class(TFormMODELO_LIST)
+    fdqListCódigo: TIntegerField;
+    fdqListNome: TWideStringField;
+    fdqListDocumento: TWideStringField;
+    fdqListTelefone: TWideStringField;
+    fdqListEmail: TWideStringField;
+    fdqListEndereço: TWideMemoField;
+    fdqListVeículo: TWideMemoField;
+    fdqListPlaca: TWideStringField;
+    fdqListKM: TWideStringField;
+    fdqListstatus: TWideStringField;
+    fdqListAtivo: TSmallintField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormClientes: TFormClientes;
+
+implementation
+
+{$R *.dfm}
+
+end.

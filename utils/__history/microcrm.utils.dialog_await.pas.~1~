@@ -1,0 +1,24 @@
+unit microcrm.utils.dialog_await;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs;
+
+type
+  TFormWhaitDialog = class(TForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormWhaitDialog: TFormWhaitDialog;
+
+implementation
+
+{$R *.dfm}
+
+end.

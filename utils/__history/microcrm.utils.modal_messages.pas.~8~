@@ -1,0 +1,105 @@
+unit microcrm.utils.modal_messages;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
+  Vcl.StdCtrls, System.Actions, Vcl.ActnList;
+
+type
+  TFormDialogMessages = class(TForm)
+    ActionList1: TActionList;
+    actYes: TAction;
+    actNo: TAction;
+    panelBackgroud: TPanel;
+    shpBackground: TShape;
+    lblFormTitle: TLabel;
+    imgInfo: TImage;
+    lblTitle: TLabel;
+    lblMessage: TLabel;
+    Panel1: TPanel;
+    pnlButtonNo: TPanel;
+    pnlButtonYes: TPanel;
+    imgAlert: TImage;
+    imgDanger: TImage;
+    imgError: TImage;
+    imgExit: TImage;
+    imgQuest: TImage;
+    procedure actYesExecute(Sender: TObject);
+    procedure actNoExecute(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    sTitleForm, sTitleMessage, sMessage, sIcon, sType : string;
+    bResponseMsg : Boolean;
+  end;
+
+var
+  FormDialogMessages: TFormDialogMessages;
+
+implementation
+uses
+    microcrm.utils.resolve_exception;
+
+{$R *.dfm}
+
+{ TFormDialogMessages }
+
+procedure TFormDialogMessages.actNoExecute(Sender: TObject);
+begin
+  bResponseMsg := False;
+  Self.Close();
+end;
+
+procedure TFormDialogMessages.actYesExecute(Sender: TObject);
+begin
+  bResponseMsg  := True;
+  Self.Close();
+end;
+
+procedure TFormDialogMessages.FormShow(Sender: TObject);
+begin
+  bResponseMsg          := False;
+  lblFormTitle.Caption  := sTitleForm;
+  lblTitle.Caption      := sTitleMessage;
+  lblMessage.Caption    := sMessage;
+
+  if sType = 'info' then
+  begin
+   imgInfo.Visible      := True;
+   pnlButtonNo.Visible  := False;
+   pnlButtonYes.Caption := 'OK ( Enter )';
+  end;
+  if sType = 'quest' then
+  begin
+   imgQuest.Visible     := True;
+  end;
+  if sType = 'alert' then
+  begin
+   imgAlert.Visible     := True;
+   pnlButtonNo.Visible  := False;
+   pnlButtonYes.Caption := 'OK ( Enter )';
+  end;
+  if sType = 'danger' then
+  begin
+   imgDanger.Visible    := True;
+   pnlButtonNo.Visible  := False;
+   pnlButtonYes.Caption := 'OK ( Enter )';
+  end;
+  if sType = 'exit' then
+  begin
+   imgExit.Visible      := True;
+  end;
+  if sType = 'error' then
+  begin
+    imgError.Visible     := True;
+    pnlButtonNo.Visible  := False;
+    pnlButtonYes.Caption := 'OK ( Enter )';
+  end;
+
+end;
+
+end.

@@ -1,0 +1,33 @@
+unit microcrm.views.modals.edititem;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TFormEditItem = class(TForm)
+    pnlContent: TPanel;
+    pnlHeader: TPanel;
+    lblFormTitle: TLabel;
+    pnlActions: TPanel;
+    btnIncluirItem: TButton;
+    txtItemNome: TEdit;
+    Label20: TLabel;
+    Label22: TLabel;
+    txtCobrado: TEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormEditItem: TFormEditItem;
+
+implementation
+
+{$R *.dfm}
+
+end.

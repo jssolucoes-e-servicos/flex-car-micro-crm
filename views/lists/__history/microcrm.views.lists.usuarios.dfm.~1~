@@ -1,0 +1,107 @@
+inherited FormUsuarios: TFormUsuarios
+  Caption = 'Usu'#225'rios'
+  StyleElements = [seFont, seClient, seBorder]
+  TextHeight = 15
+  inherited pnlBackground: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    inherited pnlBaseForm: TPanel
+      StyleElements = [seFont, seClient, seBorder]
+      inherited pnlTitleBar: TPanel
+        StyleElements = [seFont, seClient, seBorder]
+        inherited Panel3: TPanel
+          StyleElements = [seFont, seClient, seBorder]
+          inherited lblDescriptionForm: TLabel
+            Width = 909
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited lblTitleForm: TLabel
+            Width = 874
+            Height = 38
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited lblFormName: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited lblStatus: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited lblCount: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited pnlCloseForm: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+        end
+      end
+      inherited pnlContent: TPanel
+        StyleElements = [seFont, seClient, seBorder]
+        inherited pnlLeft: TPanel
+          StyleElements = [seFont, seClient, seBorder]
+          inherited pnlDivider: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited pnlButtonNew: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+            inherited Panel4: TPanel
+              StyleElements = [seFont, seClient, seBorder]
+              inherited Label2: TLabel
+                Width = 128
+                StyleElements = [seFont, seClient, seBorder]
+              end
+              inherited Label4: TLabel
+                Width = 128
+                StyleElements = [seFont, seClient, seBorder]
+              end
+            end
+          end
+          inherited pnlButtonPrint: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+            inherited Panel5: TPanel
+              StyleElements = [seFont, seClient, seBorder]
+              inherited Label5: TLabel
+                Width = 128
+                StyleElements = [seFont, seClient, seBorder]
+              end
+              inherited Label6: TLabel
+                Width = 128
+                StyleElements = [seFont, seClient, seBorder]
+              end
+            end
+          end
+          inherited pnlButtonUpdate: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+            inherited Panel6: TPanel
+              StyleElements = [seFont, seClient, seBorder]
+              inherited Label7: TLabel
+                Width = 128
+                StyleElements = [seFont, seClient, seBorder]
+              end
+              inherited Label8: TLabel
+                Width = 128
+                StyleElements = [seFont, seClient, seBorder]
+              end
+            end
+          end
+        end
+        inherited pnlCenter: TPanel
+          StyleElements = [seFont, seClient, seBorder]
+          inherited pnlFiterBox: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+            inherited pnlButtonYes: TPanel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited cboField: TJvComboBox
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited txtValue: TJvEdit
+              StyleElements = [seFont, seClient, seBorder]
+            end
+          end
+          inherited pnlGrid: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+        end
+      end
+    end
+  end
+end

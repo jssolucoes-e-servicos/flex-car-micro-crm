@@ -1,0 +1,270 @@
+﻿inherited FormClientes: TFormClientes
+  Caption = 'Clientes'
+  StyleElements = [seFont, seClient, seBorder]
+  TextHeight = 15
+  inherited pnlBackground: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    inherited pnlBaseForm: TPanel
+      StyleElements = [seFont, seClient, seBorder]
+      inherited pnlTitleBar: TPanel
+        StyleElements = [seFont, seClient, seBorder]
+        inherited Panel3: TPanel
+          StyleElements = [seFont, seClient, seBorder]
+          inherited lblDescriptionForm: TLabel
+            Width = 909
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited lblTitleForm: TLabel
+            Width = 874
+            Height = 38
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited lblFormName: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited lblStatus: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited lblCount: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited pnlCloseForm: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+        end
+      end
+      inherited pnlContent: TPanel
+        StyleElements = [seFont, seClient, seBorder]
+        inherited pnlLeft: TPanel
+          StyleElements = [seFont, seClient, seBorder]
+          inherited pnlDivider: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited pnlButtonNew: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+            inherited Panel4: TPanel
+              StyleElements = [seFont, seClient, seBorder]
+              inherited Label2: TLabel
+                Width = 128
+                StyleElements = [seFont, seClient, seBorder]
+              end
+              inherited Label4: TLabel
+                Width = 128
+                StyleElements = [seFont, seClient, seBorder]
+              end
+            end
+          end
+          inherited pnlButtonPrint: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+            inherited Panel5: TPanel
+              StyleElements = [seFont, seClient, seBorder]
+              inherited Label5: TLabel
+                Width = 128
+                StyleElements = [seFont, seClient, seBorder]
+              end
+              inherited Label6: TLabel
+                Width = 128
+                StyleElements = [seFont, seClient, seBorder]
+              end
+            end
+          end
+          inherited pnlButtonUpdate: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+            inherited Panel6: TPanel
+              StyleElements = [seFont, seClient, seBorder]
+              inherited Label7: TLabel
+                Width = 128
+                StyleElements = [seFont, seClient, seBorder]
+              end
+              inherited Label8: TLabel
+                Width = 128
+                StyleElements = [seFont, seClient, seBorder]
+              end
+            end
+          end
+        end
+        inherited pnlCenter: TPanel
+          StyleElements = [seFont, seClient, seBorder]
+          inherited pnlFiterBox: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+            inherited pnlButtonYes: TPanel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited cboField: TJvComboBox
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited txtValue: TJvEdit
+              StyleElements = [seFont, seClient, seBorder]
+            end
+          end
+          inherited pnlGrid: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+            inherited dbgList: TDBGrid
+              Columns = <
+                item
+                  Expanded = False
+                  FieldName = 'Nome'
+                  Title.Alignment = taCenter
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWindowText
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Tahoma'
+                  Title.Font.Style = [fsBold]
+                  Width = 280
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'Telefone'
+                  Title.Alignment = taCenter
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWindowText
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Tahoma'
+                  Title.Font.Style = [fsBold]
+                  Width = 100
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'email'
+                  Title.Alignment = taCenter
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWindowText
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Tahoma'
+                  Title.Font.Style = [fsBold]
+                  Width = 250
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'login'
+                  Title.Alignment = taCenter
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWindowText
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Tahoma'
+                  Title.Font.Style = [fsBold]
+                  Width = 100
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'perfil'
+                  Title.Alignment = taCenter
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWindowText
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Tahoma'
+                  Title.Font.Style = [fsBold]
+                  Width = 50
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'Ativo'
+                  Title.Alignment = taCenter
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWindowText
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Tahoma'
+                  Title.Font.Style = [fsBold]
+                  Width = 50
+                  Visible = True
+                end>
+            end
+          end
+        end
+      end
+    end
+  end
+  inherited fdqList: TFDQuery
+    Active = False
+    SQL.Strings = (
+      'SELECT'
+      '   c.id AS "C'#243'digo",'
+      '   c.nome AS "Nome",'
+      '   c.documento AS "Documento",'
+      '   c.telefone AS "Telefone",'
+      '   c.email AS "E-mail",'
+      '   COALESCE(c.logradouro || '#39', '#39', '#39'<< rua n'#227'o informada >>'#39') || '
+      '   COALESCE(c.numero || '#39', '#39', '#39'SEM N'#218'MERO'#39') || '
+      '   COALESCE(c.complemento || '#39', '#39', '#39#39') || '
+      '   COALESCE(c.bairro || '#39', '#39', '#39'<< bairro n'#227'o informado >>'#39') || '
+      '   COALESCE(c.cidade || '#39#39', '#39'<< cidade n'#227'o informada >>'#39') || '
+      '   c.cidade AS "Endere'#231'o",'
+      
+        '   COALESCE(c.veiculo_marca || '#39', '#39', '#39'<< marca n'#227'o informada >>'#39 +
+        ') ||'
+      
+        '   COALESCE(c.veiculo_modelo || '#39', '#39', '#39'<< modelo n'#227'o informado >' +
+        '>'#39') ||'
+      '   COALESCE(c.veiculo_ano || '#39', '#39', '#39'<< ano n'#227'o informado >>'#39') ||'
+      '   c.veiculo_ano AS "Ve'#237'culo",'
+      '   c.veiculo_placa AS "Placa",'
+      '   c.veiculo_km AS "KM",'
+      '   s.Nome AS Status,'
+      '   c.ativo AS "Ativo"'
+      '   '
+      'FROM '
+      '   clientes AS c'
+      'INNER JOIN clientes_status AS s ON ( s.id = c.status_id )')
+    object fdqListCódigo: TIntegerField
+      FieldName = 'C'#243'digo'
+      Origin = '"C'#243'digo"'
+    end
+    object fdqListNome: TWideStringField
+      FieldName = 'Nome'
+      Origin = '"Nome"'
+      Size = 255
+    end
+    object fdqListDocumento: TWideStringField
+      FieldName = 'Documento'
+      Origin = '"Documento"'
+    end
+    object fdqListTelefone: TWideStringField
+      FieldName = 'Telefone'
+      Origin = '"Telefone"'
+      Size = 11
+    end
+    object fdqListEmail: TWideStringField
+      FieldName = 'E-mail'
+      Origin = '"E-mail"'
+      Size = 255
+    end
+    object fdqListEndereço: TWideMemoField
+      FieldName = 'Endere'#231'o'
+      Origin = '"Endere'#231'o"'
+      ReadOnly = True
+      BlobType = ftWideMemo
+    end
+    object fdqListVeículo: TWideMemoField
+      AutoGenerateValue = arDefault
+      FieldName = 'Ve'#237'culo'
+      Origin = '"Ve'#237'culo"'
+      ReadOnly = True
+      BlobType = ftWideMemo
+    end
+    object fdqListPlaca: TWideStringField
+      FieldName = 'Placa'
+      Origin = '"Placa"'
+      Size = 8
+    end
+    object fdqListKM: TWideStringField
+      FieldName = 'KM'
+      Origin = '"KM"'
+      Size = 10
+    end
+    object fdqListstatus: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'status'
+      Origin = 'status'
+      Size = 100
+    end
+    object fdqListAtivo: TSmallintField
+      FieldName = 'Ativo'
+      Origin = '"Ativo"'
+    end
+  end
+end
